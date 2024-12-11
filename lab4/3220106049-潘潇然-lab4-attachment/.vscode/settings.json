@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "*.java": "java",
+        "*.vue": "vue",
+        "stdlib.h": "c",
+        "stdint.h": "c",
+        "cstdarg": "c",
+        "printk.h": "c",
+        "string.h": "c"
+    }
+}
