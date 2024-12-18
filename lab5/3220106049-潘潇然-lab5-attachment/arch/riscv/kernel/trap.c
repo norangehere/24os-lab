@@ -107,20 +107,20 @@ void do_page_fault(struct pt_regs *regs, uint64_t scause) {
       last_flag = 1;
     if (first_flag && last_flag)
       memcpy((void *)(page + begin_offset),
-             (void *)((uint64_t)_sramdisk + begin_offset),
+             (void *)((uint64_t)_sramdisk + vma->vm_pgoff),
              PGSIZE - begin_offset - end_remain);
     else if (first_flag)
       memcpy((void *)page + begin_offset,
-             (void *)((uint64_t)_sramdisk + begin_offset),
+             (void *)((uint64_t)_sramdisk + vma->vm_pgoff),
              PGSIZE - begin_offset);
     else if (last_flag)
       memcpy((void *)page,
-             (void *)((uint64_t)_sramdisk + begin_offset +
+             (void *)((uint64_t)_sramdisk + vma->vm_pgoff +
                       PGROUNDDOWN(bad_address) - vma->vm_start),
              PGSIZE - end_remain);
     else
       memcpy((void *)page,
-             (void *)((uint64_t)_sramdisk + begin_offset +
+             (void *)((uint64_t)_sramdisk + vma->vm_pgoff +
                       PGROUNDDOWN(bad_address) - vma->vm_start),
              PGSIZE);
   }
