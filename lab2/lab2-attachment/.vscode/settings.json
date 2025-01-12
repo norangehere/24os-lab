@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.java": "java",
+        "*.vue": "vue",
+        "stdlib.h": "c"
+    }
+}
